@@ -42,5 +42,4 @@ public class RestApiLoginTests {
                 assertThat().body(containsString("message")).
                 assertThat().body(not(containsString("token")));
     }
-
 }
