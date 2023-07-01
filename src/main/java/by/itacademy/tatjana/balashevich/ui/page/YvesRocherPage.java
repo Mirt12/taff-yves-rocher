@@ -10,6 +10,10 @@ public class YvesRocherPage {
     String submitLoginFormButtonLocator = "//button[contains(text(),'Авторизация')]";
     String emailErrorLocator = "//val-errors[@controlname='email']/div[1]";
     String passwordErrorLocator = "//val-errors[@controlname='password']/div[1]";
+    String errorLocatorForNotExistUser = "//div[contains(text(),'Проверьте корректность введенных данных')]";
+
     String expectedloginErrorText = "Это поле является обязательным";
     String expectedEmailErrorText = "Email должен быть валидным";
+    String expectedErrorTextForNotExistUser="Проверьте корректность введенных данных";
+    String expectedErrorTextForShortPwd = "Пароль должен быть больше 6 символов";
 }
