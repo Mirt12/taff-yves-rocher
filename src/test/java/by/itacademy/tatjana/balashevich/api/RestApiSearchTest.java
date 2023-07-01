@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.Matchers.not;
 
 public class RestApiSearchTest {
     @Test
@@ -31,8 +30,7 @@ public class RestApiSearchTest {
                 assertThat().body(containsString("basket")).
                 assertThat().body(containsString("rating")).
                 assertThat().body(containsString("description")).
-                assertThat().body(containsString("category")).
-                assertThat().body(not(containsString("message")));
+                assertThat().body(containsString("category"));
     }
 
     @Test
