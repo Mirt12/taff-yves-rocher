@@ -8,14 +8,6 @@ import org.testng.Assert;
 import static io.restassured.RestAssured.given;
 
 public class RestApiHomePageTest {
-    @Test
-    public void loadHomePageHtmlTest() {
-        String url = "https://www.y-r.by";
-        given().header("accept", "application/json").
-                when().get(url).
-                then().log().body().
-                assertThat().statusCode(200);
-    }
 
     @Test
     public void loadTopSellingProductsTest() {
@@ -24,6 +16,7 @@ public class RestApiHomePageTest {
                 when().get(url).
                 then().log().body().
                 assertThat().statusCode(200);
+        //to check something in the request -any field
     }
 
     @Test

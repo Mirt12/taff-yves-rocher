@@ -1,6 +1,6 @@
 package by.itacademy.tatjana.balashevich.ui;
 
-import by.itacademy.tatjana.balashevich.ui.methods.Util;
+import by.itacademy.tatjana.balashevich.ui.utils.Util;
 import by.itacademy.tatjana.balashevich.ui.page.YvesRocherPage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

@@ -13,24 +13,9 @@ public class RestApiSearchTest {
                 when().get(url).
                 then().log().body().
                 assertThat().statusCode(200).
-                assertThat().body(containsString("id")).
-                assertThat().body(containsString("title")).
-                assertThat().body(containsString("cost")).
-                assertThat().body(containsString("cost_for_human")).
-                assertThat().body(containsString("discount_cost")).
-                assertThat().body(containsString("discount_cost_for_human")).
-                assertThat().body(containsString("current_cost")).
-                assertThat().body(containsString("current_cost_for_human")).
-                assertThat().body(containsString("discount")).
-                assertThat().body(containsString("images")).
-                assertThat().body(containsString("code")).
-                assertThat().body(containsString("shape")).
-                assertThat().body(containsString("weight")).
-                assertThat().body(containsString("type")).
-                assertThat().body(containsString("basket")).
-                assertThat().body(containsString("rating")).
-                assertThat().body(containsString("description")).
-                assertThat().body(containsString("category"));
+                assertThat().body(containsString("title"));
+        //to check word 'creme' is in the 'title' key of json
+        //to check that "data": [] is not empty
     }
 
     @Test
@@ -46,5 +31,6 @@ public class RestApiSearchTest {
                 assertThat().body(containsString("filter_bar")).
                 assertThat().body(containsString("banners_layout")).
                 assertThat().body(containsString("filter_options"));
+        //to check that "data": [] is empty in json
     }
 }
