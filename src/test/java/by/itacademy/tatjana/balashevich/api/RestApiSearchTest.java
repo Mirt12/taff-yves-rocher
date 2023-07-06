@@ -1,36 +1,42 @@
 package by.itacademy.tatjana.balashevich.api;
 
+import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
-
+import org.testng.Assert;
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.*;
+
 
 public class RestApiSearchTest {
     @Test
-    public void validProductSearchTest() {
+    public void hasSearchProductTitleKey() {
         String url = "https://api.y-r.by/api/v1/products?search=крем";
         given().header("accept", "application/json").
                 when().get(url).
-                then().log().body().
+                then().
                 assertThat().statusCode(200).
                 assertThat().body(containsString("title"));
-        //to check word 'creme' is in the 'title' key of json
-        //to check that "data": [] is not empty
     }
 
     @Test
-    public void invalidProductSearchTest() {
-        String url = "https://api.y-r.by/api/v1/products?search=антарес";
+    public void hasSearchProductCremeValue() {
+        String url = "https://api.y-r.by/api/v1/products?search=крем";
         given().header("accept", "application/json").
                 when().get(url).
-                then().log().body().
+                then().
                 assertThat().statusCode(200).
-                assertThat().body(containsString("data")).
-                assertThat().body(containsString("links")).
-                assertThat().body(containsString("meta")).
-                assertThat().body(containsString("filter_bar")).
-                assertThat().body(containsString("banners_layout")).
-                assertThat().body(containsString("filter_options"));
-        //to check that "data": [] is empty in json
+                assertThat().body("data[0].category", containsString("Крем"));
+    }
+
+    @Test
+    public void isInvalidSearchHasEmptyArray() {
+        //to save response
+        Response response = given().header("accept", "application/json").
+                when().get("https://api.y-r.by/api/v1/products?search=антарес");
+        //to save json body
+        JsonPath jsonPath = response.jsonPath();
+        int jsonSize = jsonPath.getInt("data.size()");
+        Assert.assertEquals(jsonSize, 0);
     }
 }
