@@ -7,7 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.testng.Assert;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.equalTo;
 
 public class RestApiHomePageTest {
 
@@ -40,7 +41,8 @@ public class RestApiHomePageTest {
                 .header("x-session", "d3a2ad058ce3077b6a7ccb01e2fc04dc16d3926" + faker)
                 .body(requestBody).log().body().
                 when().post("https://api.y-r.by/api/v1/basket").
-                then().assertThat().
+                then().
+                assertThat().
                 statusCode(200).
                 body("basket[0].product.id", equalTo(3626));
     }
