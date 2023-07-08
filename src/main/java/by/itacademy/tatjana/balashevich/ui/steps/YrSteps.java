@@ -25,7 +25,6 @@ public class YrSteps {
         YvesRocherPage yvesRocherPage = new YvesRocherPage(driver);
         Wait<WebDriver> wait = LoadHelper.wait30seconds(driver);
         yvesRocherPage.closeLanguageModalOfHomePage(wait);
-        yvesRocherPage.fillInputFieldPassword(password);
-        yvesRocherPage.clickSubmitButtonOfLoginForm();
+        yvesRocherPage.clickAuthorizationLink(wait);
     }
 }
