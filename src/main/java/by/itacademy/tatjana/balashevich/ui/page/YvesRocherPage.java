@@ -11,7 +11,7 @@ public class YvesRocherPage {
     WebDriver driver;
     private String url = "https://www.y-r.by";
     private String homePageCloseLanguageModalLocator = "//button[@aria-label='Close']";
-    private String homePageLoginLinkLocator = "//a[@href='/auth/login']";
+    //private String homePageLoginLinkLocator = "//a[@href='/auth/login']";
     private String authorizationLinkLocator = "//h2[contains(text(),'Авторизация')]";
     private String loginFormInputEmailLocator = "//input[@id='user-email']";
     private String loginFormInputPwdLocator = "//input[@id='user-password']";
@@ -44,13 +44,26 @@ public class YvesRocherPage {
         inputPassword.sendKeys(password);
     }
 
-    public void clickButtonOfHomePageCloseLanguageModal() {
-        WebElement btn = driver.findElement(By.xpath(homePageCloseLanguageModalLocator));
-        btn.click();
-    }
-
     public void clickSubmitButtonOfLoginForm() {
         WebElement btn = driver.findElement(By.xpath(submitLoginFormButtonLocator));
         btn.click();
+    }
+
+    public void closeLanguageModalOfHomePage(Wait wait) {
+        WebElement btn = (WebElement) wait.until(new Function<WebDriver, WebElement>() {
+            public WebElement apply(WebDriver driver) {
+                return driver.findElement(By.xpath(homePageCloseLanguageModalLocator));
+            }
+        });
+        btn.click();
+    }
+
+    public void clickAuthorizationLink(Wait wait) {
+        WebElement authorizationLink = (WebElement) wait.until(new Function<WebDriver, WebElement>() {
+            public WebElement apply(WebDriver driver) {
+                return driver.findElement(By.xpath(authorizationLinkLocator));
+            }
+        });
+        authorizationLink.click();
     }
 }

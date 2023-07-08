@@ -1,7 +1,10 @@
 package by.itacademy.tatjana.balashevich.ui;
 
+import by.itacademy.tatjana.balashevich.ui.steps.YrSteps;
+import by.itacademy.tatjana.balashevich.ui.utils.LoadHelper;
 import by.itacademy.tatjana.balashevich.ui.utils.Util;
-import by.itacademy.tatjana.balashevich.ui.page.YvesRocherPage;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -9,19 +12,38 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.Wait;
+
+import java.io.UnsupportedEncodingException;
 
 public class UiLoginFormTests {
-    YvesRocherPage page = new YvesRocherPage();
+    WebDriver driver;
+    YrSteps yrSteps;
 
-    @Test
-    public void toFillLoginFormByCorrectData() throws InterruptedException {
+    @Before
+    public void testSetUp() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--incognito");
         options.addArguments("--disable-cache");
-        WebDriver driver = new ChromeDriver(options);
+        driver = new ChromeDriver(options);
+        yrSteps = new YrSteps(driver);
         driver.manage().window().maximize();
-        driver.get("https://www.y-r.by");
-        Thread.sleep(10000);
+        driver.get("https://www.y-r.by/auth/login");
+        //to close modal method:
+
+    }
+
+    @After
+    public void testToFinish() {
+        driver.quit();
+    }
+
+    @Test
+    public void toFillLoginFormByCorrectData() throws UnsupportedEncodingException {
+        yrSteps.fillLoginFormAndSubmit("tbalashevich@bk.ru", "PostinG@2579!");
+        Wait wait = LoadHelper.wait30seconds(driver);
+
+        //??
         String homePageCloseLanguageModalLocator = "//button[@aria-label='Close']";
         WebElement submitLanguageBtn = driver.findElement(By.xpath(homePageCloseLanguageModalLocator));
         submitLanguageBtn.click();
@@ -239,6 +261,7 @@ public class UiLoginFormTests {
         Assertions.assertEquals(expectedErrorTextForShortPwd, actualErrorText);
         driver.quit();
     }
+
     @Test
     public void longPasswordErrorTest() throws InterruptedException {
         ChromeOptions options = new ChromeOptions();
