@@ -1,18 +1,17 @@
 package by.itacademy.tatjana.balashevich.ui;
 
 import by.itacademy.tatjana.balashevich.ui.steps.YrSteps;
-import by.itacademy.tatjana.balashevich.ui.utils.LoadHelper;
 import by.itacademy.tatjana.balashevich.ui.utils.Util;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.ui.Wait;
 
 import java.io.UnsupportedEncodingException;
 
@@ -29,47 +28,21 @@ public class UiLoginFormTests {
         yrSteps = new YrSteps(driver);
         driver.manage().window().maximize();
         driver.get("https://www.y-r.by/auth/login");
-        //to close modal method:
-
+        yrSteps.openLoginForm();
     }
 
     @After
     public void testToFinish() {
-        driver.quit();
+        //driver.quit();
     }
 
     @Test
     public void toFillLoginFormByCorrectData() throws UnsupportedEncodingException {
         yrSteps.fillLoginFormAndSubmit("tbalashevich@bk.ru", "PostinG@2579!");
-        Wait wait = LoadHelper.wait30seconds(driver);
-
-        //??
-        String homePageCloseLanguageModalLocator = "//button[@aria-label='Close']";
-        WebElement submitLanguageBtn = driver.findElement(By.xpath(homePageCloseLanguageModalLocator));
-        submitLanguageBtn.click();
-        String homePageLoginLinkLocator = "//a[@href='/auth/login']";
-        WebElement loginFormLink = driver.findElement(By.xpath(homePageLoginLinkLocator));
-        loginFormLink.click();
-        String authorizationLinkLocator = "//h2[contains(text(),'Авторизация')]";
-        Thread.sleep(10000);
-        WebElement authorizationLink = driver.findElement(By.xpath(authorizationLinkLocator));
-        authorizationLink.click();
-        String loginFormInputEmailLocator = "//input[@id='user-email']";
-        String loginFormInputPwdLocator = "//input[@id='user-password']";
-        Thread.sleep(10000);
-        WebElement emailInputField = driver.findElement(By.xpath(loginFormInputEmailLocator));
-        emailInputField.sendKeys("tbalashevich@bk.ru");
-        WebElement pwdInputField = driver.findElement(By.xpath(loginFormInputPwdLocator));
-        pwdInputField.sendKeys("PostinG@2579!");
-        String submitLoginFormButtonLocator = "//button[contains(text(),'Авторизация')]";
-        WebElement submitLoginFormButton = driver.findElement(By.xpath(submitLoginFormButtonLocator));
-        submitLoginFormButton.click();
-        Thread.sleep(10000);
         String expectedHeaderText = "Персональные данные";
         WebElement actualHeaderTextElement = driver.findElement(By.xpath("//h2[contains(text(),'Персональные данные')]"));
         String actualGreetingText = actualHeaderTextElement.getText();
         Assertions.assertEquals(expectedHeaderText, actualGreetingText);
-        driver.quit();
     }
 
     @Test
