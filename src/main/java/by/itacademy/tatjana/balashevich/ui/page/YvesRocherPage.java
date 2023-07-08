@@ -16,14 +16,17 @@ public class YvesRocherPage {
     private String loginFormInputEmailLocator = "//input[@id='user-email']";
     private String loginFormInputPwdLocator = "//input[@id='user-password']";
     private String submitLoginFormButtonLocator = "//button[contains(text(),'Авторизация')]";
-    private String emailErrorLocator = "//val-errors[@controlname='email']/div[1]";
-    private String passwordErrorLocator = "//val-errors[@controlname='password']/div[1]";
-    private String errorLocatorForNotExistUser = "//div[contains(text(),'Проверьте корректность введенных данных')]";
+    public static final String emailErrorLocator = "//val-errors[@controlname='email']/div[1]";
+    public static final String passwordErrorLocator = "//val-errors[@controlname='password']/div[1]";
+    public static final String errorLocatorForNotExistUser = "//div[contains(text(),'Проверьте корректность введенных данных')]";
+    public static final String loginGreetingLocator = "//h2[contains(text(),'Персональные данные')]";
     //Error messages
-    private String expectedloginErrorText = "Это поле является обязательным";
-    private String expectedEmailErrorText = "Email должен быть валидным";
-    private String expectedErrorTextForNotExistUser = "Проверьте корректность введенных данных";
-    private String expectedErrorTextForShortPwd = "Пароль должен быть больше 6 символов";
+    public static final String expectedloginErrorText = "Это поле является обязательным";
+    public static final String expectedEmailErrorText = "Email должен быть валидным";
+    public static final String expectedErrorTextForNotExistUser = "Проверьте корректность введенных данных";
+    public static final String expectedErrorTextForShortPwd = "Пароль должен быть больше 6 символов";
+    public static final String expectedErrorTextForLongPwd = "Пароль должен быть не более 30 символов";
+    public static final String expectedHeaderText = "Персональные данные";
 
 
     public YvesRocherPage(WebDriver driver) {

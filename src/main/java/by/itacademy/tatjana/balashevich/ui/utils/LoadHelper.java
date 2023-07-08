@@ -18,11 +18,13 @@ public class LoadHelper {
                 .ignoring(NoSuchElementException.class);
     }
 
-    public static WebElement getElementByXpath(Wait wait, String xpath) {
-        return (WebElement) wait.until(new Function<WebDriver, WebElement>() {
+    public static String getTextByLocator(WebDriver driver, String locator) {
+        Wait<WebDriver> wait = LoadHelper.wait30seconds(driver);
+        WebElement actualTextElement = (WebElement) wait.until(new Function<WebDriver, WebElement>() {
             public WebElement apply(WebDriver driver) {
-                return driver.findElement(By.xpath(xpath));
+                return driver.findElement(By.xpath(locator));
             }
         });
+        return actualTextElement.getText();
     }
 }
