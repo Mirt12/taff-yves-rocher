@@ -1,9 +1,6 @@
 package by.itacademy.tatjana.balashevich.api;
-
 import org.junit.jupiter.api.Test;
-
 import java.util.HashMap;
-
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 
@@ -43,7 +40,7 @@ public class RestApiLoginTests {
                 statusCode(401).
                 body(containsString("message")).
                 body(not(containsString("token"))).
-                body("message", equalTo("Проверьте корректность введенных данных"));
+                body("message", equalTo("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ"));
     }
 
     @Test
@@ -60,8 +57,8 @@ public class RestApiLoginTests {
                 then().
                 assertThat().
                 statusCode(422).
-                body("errors.password[0]", equalTo("Поле пароль обязательно для заполнения.")).
-                body("errors.email[0]", equalTo("Поле электронная почта обязательно для заполнения."));
+                body("errors.password[0]", equalTo("РџРѕР»Рµ РїР°СЂРѕР»СЊ РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ РґР»СЏ Р·Р°РїРѕР»РЅРµРЅРёСЏ.")).
+                body("errors.email[0]", equalTo("пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ."));
     }
 
     @Test
@@ -77,6 +74,6 @@ public class RestApiLoginTests {
                 when().post("https://api.y-r.by/api/v1/token").
                 then().assertThat().
                 statusCode(422).
-                body("errors.password[0]", equalTo("Поле пароль обязательно для заполнения."));
+                body("errors.password[0]", equalTo("пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ."));
     }
 }

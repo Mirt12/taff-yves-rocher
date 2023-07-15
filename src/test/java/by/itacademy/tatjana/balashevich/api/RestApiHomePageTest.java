@@ -1,11 +1,9 @@
 package by.itacademy.tatjana.balashevich.api;
-
 import com.github.javafaker.Faker;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.testng.Assert;
-
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
@@ -29,7 +27,7 @@ public class RestApiHomePageTest {
                 when().get("https://api.y-r.by/api/v1/products?filter[is_top_seller]=1&limit=20");
         JsonPath jsonPath = response.jsonPath();
         int jsonSize = jsonPath.getInt("data.size()");
-        Assert.assertEquals(jsonSize, 20);
+        Assertions.assertEquals(jsonSize, 20);
     }
 
     @Test

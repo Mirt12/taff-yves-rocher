@@ -4,10 +4,10 @@ import by.itacademy.tatjana.balashevich.ui.page.YvesRocherPage;
 import by.itacademy.tatjana.balashevich.ui.steps.YrSteps;
 import by.itacademy.tatjana.balashevich.ui.utils.LoadHelper;
 import by.itacademy.tatjana.balashevich.ui.utils.Util;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -18,7 +18,7 @@ public class UiLoginFormTests {
     WebDriver driver;
     YrSteps yrSteps;
 
-    @Before
+    @BeforeEach
     public void testSetUp() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--incognito");
@@ -30,7 +30,7 @@ public class UiLoginFormTests {
         yrSteps.openLoginForm();
     }
 
-    @After
+    @AfterEach
     public void testToFinish() {
         driver.quit();
     }
