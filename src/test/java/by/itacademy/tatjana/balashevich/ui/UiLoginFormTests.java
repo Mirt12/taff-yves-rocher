@@ -36,21 +36,21 @@ public class UiLoginFormTests {
     }
 
     @Test
-    public void toFillLoginFormByCorrectData() throws UnsupportedEncodingException, InterruptedException {
+    public void toFillLoginFormByCorrectDataTest() throws UnsupportedEncodingException, InterruptedException {
         yrSteps.fillLoginFormAndSubmit("tbalashevich@bk.ru", "PostinG@2579!");
         String actualText = LoadHelper.getTextByLocator(driver, YvesRocherPage.loginGreetingLocator);
         Assertions.assertEquals(YvesRocherPage.expectedHeaderText, actualText);
     }
 
     @Test
-    public void toFillLoginFormByEmptyEmail() throws InterruptedException {
+    public void toFillLoginFormByEmptyEmailTest() throws InterruptedException {
         yrSteps.fillLoginFormAndSubmit("", "PostinG@2579!");
         String actualText = LoadHelper.getTextByLocator(driver, YvesRocherPage.emailErrorLocator);
         Assertions.assertEquals(YvesRocherPage.expectedloginErrorText, actualText);
     }
 
     @Test
-    public void toFillLoginFormByEmptyPassword() throws InterruptedException {
+    public void toFillLoginFormByEmptyPasswordTest() throws InterruptedException {
         yrSteps.fillLoginFormAndSubmit("tbalashevich@bk.ru", "");
         String actualText = LoadHelper.getTextByLocator(driver, YvesRocherPage.passwordErrorLocator);
         Assertions.assertEquals(YvesRocherPage.expectedloginErrorText, actualText);
@@ -64,7 +64,7 @@ public class UiLoginFormTests {
     }
 
     @Test
-    public void loginErrorForNotCreatedUser() throws InterruptedException {
+    public void loginErrorForNotCreatedUserTest() throws InterruptedException {
         yrSteps.fillLoginFormAndSubmit(Util.generateEmail(), Util.generatePWD());
         String actualText = LoadHelper.getTextByLocator(driver, YvesRocherPage.errorLocatorForNotExistUser);
         Assertions.assertEquals(YvesRocherPage.expectedErrorTextForNotExistUser, actualText);
