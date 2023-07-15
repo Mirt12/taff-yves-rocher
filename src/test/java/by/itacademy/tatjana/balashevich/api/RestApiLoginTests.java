@@ -7,7 +7,7 @@ import static org.hamcrest.Matchers.*;
 public class RestApiLoginTests {
 
     @Test
-    public void validUserCanLogin() {
+    public void validUserCanLoginTest() {
         HashMap<String, String> queryParams = new HashMap<>();
         queryParams.put("email", "tbalashevich@bk.ru");
         queryParams.put("password", "PostinG@2579!");
@@ -24,7 +24,7 @@ public class RestApiLoginTests {
     }
 
     @Test
-    public void loginByNotCreatedUser() {
+    public void loginByNotCreatedUserTest() {
         String url = "https://api.y-r.by/api/v1/token";
         String body = "{\n" +
                 "    \"email\": \"TEST@bk.ru\",\n" +
@@ -44,7 +44,7 @@ public class RestApiLoginTests {
     }
 
     @Test
-    public void loginByEmptyEmailAndPwd() {
+    public void loginByEmptyEmailAndPwdTest() {
         HashMap<String, String> queryParams = new HashMap<>();
         queryParams.put("email", "");
         queryParams.put("password", "");
@@ -58,11 +58,11 @@ public class RestApiLoginTests {
                 assertThat().
                 statusCode(422).
                 body("errors.password[0]", equalTo("Поле пароль обязательно для заполнения.")).
-                body("errors.email[0]", equalTo("Это поле является обязательным"));
+                body("errors.email[0]", equalTo("Поле электронная почта обязательно для заполнения."));
     }
 
     @Test
-    public void loginByEmptyPwd() {
+    public void loginByEmptyPwdTest() {
         HashMap<String, String> queryParams = new HashMap<>();
         queryParams.put("email", "tbalashevich@bk.ru");
         queryParams.put("password", "");
