@@ -40,7 +40,7 @@ public class RestApiLoginTests {
                 statusCode(401).
                 body(containsString("message")).
                 body(not(containsString("token"))).
-                body("message", equalTo("��������� ������������ ��������� ������"));
+                body("message", equalTo("Проверьте корректность введенных данных"));
     }
 
     @Test
@@ -58,7 +58,7 @@ public class RestApiLoginTests {
                 assertThat().
                 statusCode(422).
                 body("errors.password[0]", equalTo("Поле пароль обязательно для заполнения.")).
-                body("errors.email[0]", equalTo("���� ����������� ����� ����������� ��� ����������."));
+                body("errors.email[0]", equalTo("Это поле является обязательным"));
     }
 
     @Test
@@ -74,6 +74,6 @@ public class RestApiLoginTests {
                 when().post("https://api.y-r.by/api/v1/token").
                 then().assertThat().
                 statusCode(422).
-                body("errors.password[0]", equalTo("���� ������ ����������� ��� ����������."));
+                body("errors.password[0]", equalTo("Поле пароль обязательно для заполнения."));
     }
 }

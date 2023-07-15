@@ -11,7 +11,7 @@ import static org.hamcrest.Matchers.equalTo;
 public class RestApiHomePageTest {
 
     @Test
-    public void isTopProductHasIdKey() {
+    public void isTopProductHasIdKeyTest() {
         String url = "https://api.y-r.by/api/v1/products?filter[is_top_seller]=1&limit=1";
         given().header("accept", "application/json").
                 when().get(url).
@@ -22,7 +22,7 @@ public class RestApiHomePageTest {
     }
 
     @Test
-    public void isTopProductsHasTwentyItems() {
+    public void isTopProductsHasTwentyItemsTest() {
         Response response = given().header("accept", "application/json").
                 when().get("https://api.y-r.by/api/v1/products?filter[is_top_seller]=1&limit=20");
         JsonPath jsonPath = response.jsonPath();
@@ -31,7 +31,7 @@ public class RestApiHomePageTest {
     }
 
     @Test
-    public void isProductInCart() {
+    public void isProductInCartTest() {
         Faker faker = new Faker();
         String letters = faker.internet().password();
         String requestBody = "{\"product_id\":3626,\"amount\":1}";
