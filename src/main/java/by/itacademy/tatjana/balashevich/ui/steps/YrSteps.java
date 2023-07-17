@@ -14,17 +14,8 @@ public class YrSteps {
     }
 
     public void fillLoginFormAndSubmit(String email, String password) {
-        YvesRocherPage yvesRocherPage = new YvesRocherPage(driver);
+        YvesRocherPage page = new YvesRocherPage(driver);
         Wait<WebDriver> wait = LoadHelper.wait30seconds(driver);
-        yvesRocherPage.fillInputFieldEmail(wait, email);
-        yvesRocherPage.fillInputFieldPassword(password);
-        yvesRocherPage.clickSubmitButtonOfLoginForm();
-    }
-
-    public void openLoginForm(){
-        YvesRocherPage yvesRocherPage = new YvesRocherPage(driver);
-        Wait<WebDriver> wait = LoadHelper.wait30seconds(driver);
-        yvesRocherPage.closeLanguageModalOfHomePage(wait);
-        yvesRocherPage.clickAuthorizationLink(wait);
+        page.getURL().closeLanguageModalOfHomePage(wait).clickAuthorizationLink(wait).fillInputFieldEmail(wait, email).fillInputFieldPassword(password).clickSubmitButtonOfLoginForm();
     }
 }

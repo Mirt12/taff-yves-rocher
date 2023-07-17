@@ -4,39 +4,19 @@ import by.itacademy.tatjana.balashevich.ui.page.YvesRocherPage;
 import by.itacademy.tatjana.balashevich.ui.steps.YrSteps;
 import by.itacademy.tatjana.balashevich.ui.utils.LoadHelper;
 import by.itacademy.tatjana.balashevich.ui.utils.Util;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.io.UnsupportedEncodingException;
 
-public class UiLoginFormTests {
+public class UiLoginFormTests extends BaseUITest {
     WebDriver driver;
     YrSteps yrSteps;
 
-    @BeforeEach
-    public void testSetUp() {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--incognito");
-        options.addArguments("--disable-cache");
-        driver = new ChromeDriver(options);
-        yrSteps = new YrSteps(driver);
-        driver.manage().window().maximize();
-        driver.get("https://www.y-r.by/auth/login");
-        yrSteps.openLoginForm();
-    }
-
-    @AfterEach
-    public void testToFinish() {
-        driver.quit();
-    }
-
     @Test
     public void toFillLoginFormByCorrectDataTest() throws UnsupportedEncodingException, InterruptedException {
+        yrSteps = new YrSteps(driver);
         yrSteps.fillLoginFormAndSubmit("tbalashevich@bk.ru", "PostinG@2579!");
         String actualText = LoadHelper.getTextByLocator(driver, YvesRocherPage.loginGreetingLocator);
         Assertions.assertEquals(YvesRocherPage.expectedHeaderText, actualText);
