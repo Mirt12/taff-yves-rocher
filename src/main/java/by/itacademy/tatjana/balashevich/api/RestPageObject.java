@@ -28,7 +28,11 @@ public class RestPageObject {
         return queryParams;
     }
 
-
-
-
+    public HashMap<String, String> getQueryParamsForEmptyLoginFields() {
+        HashMap<String, String> queryParams = new HashMap<>();
+        queryParams.put("email", "");
+        queryParams.put("password", "");
+        queryParams.put("remember", "true");
+        return queryParams;
+    }
 }

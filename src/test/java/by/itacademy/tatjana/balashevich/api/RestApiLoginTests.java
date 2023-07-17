@@ -33,23 +33,16 @@ public class RestApiLoginTests {
                 .body("message", equalTo("Проверьте корректность введенных данных"));
     }
 
-
     @Test
     public void loginByEmptyEmailAndPwdTest() {
-        HashMap<String, String> queryParams = new HashMap<>();
-        queryParams.put("email", "");
-        queryParams.put("password", "");
-        queryParams.put("remember", "true");
-        HashMap<String, String> requestHeaders = new HashMap<>();
-        requestHeaders.put("content-type", "application/json");
-        requestHeaders.put("accept", "application/json");
-        given().headers(requestHeaders).queryParams(queryParams).
-                when().post("https://api.y-r.by/api/v1/token").
-                then().
-                assertThat().
-                statusCode(422).
-                body("errors.password[0]", equalTo("Поле пароль обязательно для заполнения.")).
-                body("errors.email[0]", equalTo("Поле электронная почта обязательно для заполнения."));
+        RestPageObject po = new RestPageObject();
+        given().headers(po.getRequestHeaders()).queryParams(po.getQueryParamsForEmptyLoginFields())
+                .when().post(po.endPoint)
+                .then()
+                .assertThat()
+                .statusCode(422)
+                .body("errors.password[0]", equalTo("Поле пароль обязательно для заполнения."))
+                .body("errors.email[0]", equalTo("Поле электронная почта обязательно для заполнения."));
     }
 
     @Test
