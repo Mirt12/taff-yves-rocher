@@ -12,35 +12,11 @@ public class RestPageObject {
         return headers;
     }
 
-    public HashMap<String, String> getQueryParams() {
+    public HashMap<String, String> getQueryParams(String email, String password, String isRemember) {
         HashMap<String, String> queryParams = new HashMap<>();
-        queryParams.put("email", "tbalashevich@bk.ru");
-        queryParams.put("password", "PostinG@2579!");
-        queryParams.put("remember", "true");
-        return queryParams;
-    }
-
-    public HashMap<String, String> getQueryParamsForNotCreatedUser() {
-        HashMap<String, String> queryParams = new HashMap<>();
-        queryParams.put("email", "test@test.com");
-        queryParams.put("password", "DDD42!test");
-        queryParams.put("remember", "true");
-        return queryParams;
-    }
-
-    public HashMap<String, String> getQueryParamsForEmptyLoginFields() {
-        HashMap<String, String> queryParams = new HashMap<>();
-        queryParams.put("email", "");
-        queryParams.put("password", "");
-        queryParams.put("remember", "true");
-        return queryParams;
-    }
-
-    public HashMap<String, String> getQueryParamsForEmptyPassword(){
-        HashMap<String, String> queryParams = new HashMap<>();
-        queryParams.put("email", "tbalashevich@bk.ru");
-        queryParams.put("password", "");
-        queryParams.put("remember", "true");
+        queryParams.put("email", email);
+        queryParams.put("password", password);
+        queryParams.put("remember", isRemember);
         return queryParams;
     }
 }
