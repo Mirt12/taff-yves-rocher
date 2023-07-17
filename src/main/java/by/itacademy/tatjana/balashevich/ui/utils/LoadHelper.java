@@ -12,13 +12,6 @@ import java.util.function.Function;
 
 public class LoadHelper {
 
-//    public static Wait wait30seconds(WebDriver driver) {
-//        return new FluentWait<WebDriver>(driver)
-//                .withTimeout(Duration.ofSeconds(30L))
-//                .pollingEvery(Duration.ofSeconds(5L))
-//                .ignoring(NoSuchElementException.class);
-//    }
-
     public static Wait<WebDriver> wait30seconds(WebDriver driver) {
         Wait<WebDriver> fluentWait = new FluentWait<WebDriver>(driver)
                 .withTimeout(Duration.ofSeconds(30))
@@ -26,6 +19,11 @@ public class LoadHelper {
                 .ignoring(NoSuchElementException.class);
         return fluentWait;
     }
+
+//    public static WebDriverWait wait30seconds(WebDriver driver){
+//        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(30));
+//        return wait;
+//    }
 
     public static String getTextByLocator(WebDriver driver, String locator) {
         Wait<WebDriver> wait = LoadHelper.wait30seconds(driver);

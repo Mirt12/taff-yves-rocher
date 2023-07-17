@@ -16,6 +16,11 @@ public class YrSteps {
     public void fillLoginFormAndSubmit(String email, String password) {
         YvesRocherPage page = new YvesRocherPage(driver);
         Wait<WebDriver> wait = LoadHelper.wait30seconds(driver);
-        page.getURL().closeLanguageModalOfHomePage(wait).clickAuthorizationLink(wait).fillInputFieldEmail(wait, email).fillInputFieldPassword(password).clickSubmitButtonOfLoginForm();
+        page.getLoginURL()
+                .closeLanguageModalOfHomePage(wait)
+                .clickAuthorizationLink(wait)
+                .fillInputFieldEmail(wait, email)
+                .fillInputFieldPassword(password)
+                .clickSubmitButtonOfLoginForm();
     }
 }

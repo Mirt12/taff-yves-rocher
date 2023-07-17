@@ -8,9 +8,9 @@ import org.openqa.selenium.support.ui.Wait;
 import java.util.function.Function;
 
 public class YvesRocherPage {
-    //WebDriver driver;
     private WebDriver driver;
     private String baseUrl = "https://www.y-r.by";
+    private String loginUrl = "https://www.y-r.by/auth/login";
     private String homePageCloseLanguageModalLocator = "//button[@aria-label='Close']";
     private String authorizationLinkLocator = "//h2[contains(text(),'Авторизация')]";
     private String loginFormInputEmailLocator = "//input[@id='user-email']";
@@ -33,8 +33,8 @@ public class YvesRocherPage {
         this.driver = driver;
     }
 
-    public YvesRocherPage getURL() {
-        driver.get(baseUrl);
+    public YvesRocherPage getLoginURL() {
+        driver.get(loginUrl);
         return this;
     }
 
