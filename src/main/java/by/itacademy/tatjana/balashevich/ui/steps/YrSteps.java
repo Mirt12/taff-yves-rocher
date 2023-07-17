@@ -13,6 +13,15 @@ public class YrSteps {
         this.driver = driver;
     }
 
+    public void openLoginForm() {
+        YvesRocherPage page = new YvesRocherPage(driver);
+        Wait<WebDriver> wait = LoadHelper.wait30seconds(driver);
+        page.getBaseURL()
+                .closeLanguageModalOfHomePage(wait)
+                .openHomePageLoginLink()
+                .clickAuthorizationLink(wait);
+    }
+
     public void fillLoginFormAndSubmit(String email, String password) {
         YvesRocherPage page = new YvesRocherPage(driver);
         Wait<WebDriver> wait = LoadHelper.wait30seconds(driver);

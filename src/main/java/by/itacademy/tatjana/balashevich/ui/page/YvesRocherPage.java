@@ -11,6 +11,7 @@ public class YvesRocherPage {
     private WebDriver driver;
     private String baseUrl = "https://www.y-r.by";
     private String loginUrl = "https://www.y-r.by/auth/login";
+    private String homePageLoginLinkLocator = "//header//a[@routerlink='/auth/login']";
     private String homePageCloseLanguageModalLocator = "//button[@aria-label='Close']";
     private String authorizationLinkLocator = "//h2[contains(text(),'Авторизация')]";
     private String loginFormInputEmailLocator = "//input[@id='user-email']";
@@ -20,8 +21,10 @@ public class YvesRocherPage {
     public static final String passwordErrorLocator = "//val-errors[@controlname='password']/div[1]";
     public static final String errorLocatorForNotExistUser = "//div[contains(text(),'Проверьте корректность введенных данных')]";
     public static final String loginGreetingLocator = "//h2[contains(text(),'Персональные данные')]";
+    public static final String authorizationHeaderLocator = "//h2[contains(text(),'Авторизация')]";
 
-    public static final String expectedloginErrorText = "Это поле является обязательным";
+    public static final String expectedAuthorizationHeaderText = "Авторизация";
+    public static final String expectedLoginErrorText = "Это поле является обязательным";
     public static final String expectedEmailErrorText = "Email должен быть валидным";
     public static final String expectedErrorTextForNotExistUser = "Проверьте корректность введенных данных";
     public static final String expectedErrorTextForShortPwd = "Пароль должен быть больше 6 символов";
@@ -33,8 +36,19 @@ public class YvesRocherPage {
         this.driver = driver;
     }
 
+    public YvesRocherPage getBaseURL() {
+        driver.get(baseUrl);
+        return this;
+    }
+
     public YvesRocherPage getLoginURL() {
         driver.get(loginUrl);
+        return this;
+    }
+
+    public YvesRocherPage openHomePageLoginLink(){
+        WebElement loginLink = driver.findElement(By.xpath(homePageLoginLinkLocator));
+        loginLink.click();
         return this;
     }
 

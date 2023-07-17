@@ -14,6 +14,14 @@ public class UiLoginFormTests extends BaseUITest {
     YrSteps yrSteps;
 
     @Test
+    public void userCanOpenLoginForm()throws UnsupportedEncodingException, InterruptedException {
+        yrSteps = new YrSteps(driver);
+        yrSteps.openLoginForm();
+        String actualText = LoadHelper.getTextByLocator(driver, YvesRocherPage.authorizationHeaderLocator);
+        Assertions.assertEquals(YvesRocherPage.expectedAuthorizationHeaderText, actualText);
+    }
+
+    @Test
     public void toFillLoginFormByCorrectDataTest() throws UnsupportedEncodingException, InterruptedException {
         yrSteps = new YrSteps(driver);
         yrSteps.fillLoginFormAndSubmit("tbalashevich@bk.ru", "PostinG@2579!");
@@ -26,7 +34,7 @@ public class UiLoginFormTests extends BaseUITest {
         yrSteps = new YrSteps(driver);
         yrSteps.fillLoginFormAndSubmit("", "PostinG@2579!");
         String actualText = LoadHelper.getTextByLocator(driver, YvesRocherPage.emailErrorLocator);
-        Assertions.assertEquals(YvesRocherPage.expectedloginErrorText, actualText);
+        Assertions.assertEquals(YvesRocherPage.expectedLoginErrorText, actualText);
     }
 
     @Test
@@ -34,7 +42,7 @@ public class UiLoginFormTests extends BaseUITest {
         yrSteps = new YrSteps(driver);
         yrSteps.fillLoginFormAndSubmit("tbalashevich@bk.ru", "");
         String actualText = LoadHelper.getTextByLocator(driver, YvesRocherPage.passwordErrorLocator);
-        Assertions.assertEquals(YvesRocherPage.expectedloginErrorText, actualText);
+        Assertions.assertEquals(YvesRocherPage.expectedLoginErrorText, actualText);
     }
 
     @Test
