@@ -1,6 +1,9 @@
 package by.itacademy.tatjana.balashevich.api;
+
 import org.junit.jupiter.api.Test;
+
 import java.util.HashMap;
+
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 
@@ -8,19 +11,13 @@ public class RestApiLoginTests {
 
     @Test
     public void validUserCanLoginTest() {
-        HashMap<String, String> queryParams = new HashMap<>();
-        queryParams.put("email", "tbalashevich@bk.ru");
-        queryParams.put("password", "PostinG@2579!");
-        queryParams.put("remember", "true");
-        HashMap<String, String> requestHeaders = new HashMap<>();
-        requestHeaders.put("content-type", "application/json");
-        requestHeaders.put("accept", "application/json");
-        given().headers(requestHeaders).queryParams(queryParams).
-                when().post("https://api.y-r.by/api/v1/token").
-                then().
-                assertThat().
-                statusCode(200).
-                body(containsString("token"));
+        RestPageObject po = new RestPageObject();
+        given().headers(po.getRequestHeaders()).queryParams(po.getQueryParams())
+                .when().post(po.endPoint)
+                .then()
+                .assertThat()
+                .statusCode(200)
+                .body(containsString("token"));
     }
 
     @Test
