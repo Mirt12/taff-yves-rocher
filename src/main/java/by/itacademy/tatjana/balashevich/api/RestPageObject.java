@@ -19,4 +19,16 @@ public class RestPageObject {
         queryParams.put("remember", "true");
         return queryParams;
     }
+
+    public HashMap<String, String> getQueryParamsForNotCreatedUser() {
+        HashMap<String, String> queryParams = new HashMap<>();
+        queryParams.put("email", "test@test.com");
+        queryParams.put("password", "DDD42!test");
+        queryParams.put("remember", "true");
+        return queryParams;
+    }
+
+
+
+
 }

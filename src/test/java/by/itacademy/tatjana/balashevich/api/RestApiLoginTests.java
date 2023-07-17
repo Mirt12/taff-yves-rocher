@@ -22,23 +22,17 @@ public class RestApiLoginTests {
 
     @Test
     public void loginByNotCreatedUserTest() {
-        String url = "https://api.y-r.by/api/v1/token";
-        String body = "{\n" +
-                "    \"email\": \"TEST@bk.ru\",\n" +
-                "    \"password\": \"Ghtf4f@TEST!\",\n" +
-                "    \"remember\": true\n" +
-                "}";
-        given().body(body)
-                .header("content-Type", "application/json")
-                .header("accept", "application/json").
-                when().post(url).
-                then().log().body().
-                assertThat().
-                statusCode(401).
-                body(containsString("message")).
-                body(not(containsString("token"))).
-                body("message", equalTo("Проверьте корректность введенных данных"));
+        RestPageObject po = new RestPageObject();
+        given().headers(po.getRequestHeaders()).queryParams(po.getQueryParamsForNotCreatedUser())
+                .when().post(po.endPoint)
+                .then()
+                .assertThat()
+                .statusCode(401)
+                .body(containsString("message"))
+                .body(not(containsString("token")))
+                .body("message", equalTo("Проверьте корректность введенных данных"));
     }
+
 
     @Test
     public void loginByEmptyEmailAndPwdTest() {
