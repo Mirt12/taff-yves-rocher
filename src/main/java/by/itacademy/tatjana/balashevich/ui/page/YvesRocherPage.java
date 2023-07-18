@@ -1,5 +1,6 @@
 package by.itacademy.tatjana.balashevich.ui.page;
 
+import by.itacademy.tatjana.balashevich.ui.driver.DriverSingleton;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -31,9 +32,8 @@ public class YvesRocherPage {
     public static final String expectedErrorTextForLongPwd = "Пароль должен быть не более 30 символов";
     public static final String expectedHeaderText = "Персональные данные";
 
-
-    public YvesRocherPage(WebDriver driver) {
-        this.driver = driver;
+    public YvesRocherPage() {
+        this.driver = DriverSingleton.getDriver();
     }
 
     public YvesRocherPage getBaseURL() {
@@ -46,7 +46,7 @@ public class YvesRocherPage {
         return this;
     }
 
-    public YvesRocherPage openHomePageLoginLink(){
+    public YvesRocherPage openHomePageLoginLink() {
         WebElement loginLink = driver.findElement(By.xpath(homePageLoginLinkLocator));
         loginLink.click();
         return this;

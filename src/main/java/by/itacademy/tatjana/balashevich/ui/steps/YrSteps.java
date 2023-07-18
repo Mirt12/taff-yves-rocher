@@ -1,5 +1,6 @@
 package by.itacademy.tatjana.balashevich.ui.steps;
 
+import by.itacademy.tatjana.balashevich.ui.driver.DriverSingleton;
 import by.itacademy.tatjana.balashevich.ui.page.YvesRocherPage;
 import by.itacademy.tatjana.balashevich.ui.utils.LoadHelper;
 import org.openqa.selenium.WebDriver;
@@ -9,13 +10,13 @@ public class YrSteps {
 
     WebDriver driver;
 
-    public YrSteps(WebDriver driver) {
-        this.driver = driver;
+    public YrSteps() {
+        this.driver = DriverSingleton.getDriver();
     }
 
     public void openLoginForm() {
-        YvesRocherPage page = new YvesRocherPage(driver);
-        Wait<WebDriver> wait = LoadHelper.wait30seconds(driver);
+        YvesRocherPage page = new YvesRocherPage();
+        Wait<WebDriver> wait = LoadHelper.wait30seconds();
         page.getBaseURL()
                 .closeLanguageModalOfHomePage(wait)
                 .openHomePageLoginLink()
@@ -23,8 +24,8 @@ public class YrSteps {
     }
 
     public void fillLoginFormAndSubmit(String email, String password) {
-        YvesRocherPage page = new YvesRocherPage(driver);
-        Wait<WebDriver> wait = LoadHelper.wait30seconds(driver);
+        YvesRocherPage page = new YvesRocherPage();
+        Wait<WebDriver> wait = LoadHelper.wait30seconds();
         page.getLoginURL()
                 .closeLanguageModalOfHomePage(wait)
                 .clickAuthorizationLink(wait)
