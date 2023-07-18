@@ -2,8 +2,6 @@ package by.itacademy.tatjana.balashevich.api;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.HashMap;
-
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 
