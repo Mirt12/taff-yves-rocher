@@ -1,9 +1,11 @@
 package by.itacademy.tatjana.balashevich.api;
+
 import com.github.javafaker.Faker;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
@@ -12,19 +14,19 @@ public class RestApiHomePageTest {
 
     @Test
     public void isTopProductHasIdKeyTest() {
-        String url = "https://api.y-r.by/api/v1/products?filter[is_top_seller]=1&limit=1";
-        given().header("accept", "application/json").
-                when().get(url).
-                then().log().body().
-                assertThat().
-                statusCode(200).
-                body(containsString("id"));
+        RestPageObjectForHome po = new RestPageObjectForHome();
+        given().headers(po.getHeadersForTopProduct())
+                .when().get(po.endpoint + "/products?filter[is_top_seller]=1&limit=1")
+                .then()
+                .statusCode(200)
+                .body(containsString("id"));
     }
 
     @Test
     public void isTopProductsHasTwentyItemsTest() {
-        Response response = given().header("accept", "application/json").
-                when().get("https://api.y-r.by/api/v1/products?filter[is_top_seller]=1&limit=20");
+        RestPageObjectForHome po = new RestPageObjectForHome();
+        Response response = given().headers(po.getHeadersForTopProduct())
+                .when().get(po.endpoint + "/products?filter[is_top_seller]=1&limit=20");
         JsonPath jsonPath = response.jsonPath();
         int jsonSize = jsonPath.getInt("data.size()");
         Assertions.assertEquals(jsonSize, 20);
@@ -32,16 +34,12 @@ public class RestApiHomePageTest {
 
     @Test
     public void isProductInCartTest() {
-        Faker faker = new Faker();
-        String letters = faker.internet().password();
-        String requestBody = "{\"product_id\":3626,\"amount\":1}";
-        given().header("content-type", "application/json")
-                .header("x-session", "d3a2ad058ce3077b6a7ccb01e2fc04dc16d3926" + faker)
-                .body(requestBody).log().body().
-                when().post("https://api.y-r.by/api/v1/basket").
-                then().
-                assertThat().
-                statusCode(200).
-                body("basket[0].product.id", equalTo(3626));
-    }
+      RestPageObjectForHome po = new RestPageObjectForHome();
+        given().headers(po.getHeadersForBasket())
+                .queryParams(po.getQueryParams())
+                .when().post(po.endpoint + "/basket")
+                .then()
+                .statusCode(200)
+                .body("basket[0].product.id", equalTo(3626));
+  }
 }
