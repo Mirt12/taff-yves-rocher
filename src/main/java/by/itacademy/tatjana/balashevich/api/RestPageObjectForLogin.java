@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class RestPageObjectForLogin {
 
-    String endPoint = "https://api.y-r.by/api/v1/token";
+    String endpointToken = "https://api.y-r.by/api/v1/token";
 
     public HashMap<String, String> getRequestHeaders() {
         HashMap<String, String> headers = new HashMap<>();

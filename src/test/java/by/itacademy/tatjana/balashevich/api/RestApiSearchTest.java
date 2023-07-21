@@ -16,7 +16,8 @@ public class RestApiSearchTest {
     public void hasSearchProductTitleKeyTest() {
         RestPageObjectForSearch po = new RestPageObjectForSearch();
         given().headers(po.getHeaders())
-                .when().get(po.endpoint + "=крем")
+                .queryParams(po.getQueryParams())
+                .when().get(po.endpoint)
                 .then()
                 .statusCode(200)
                 .assertThat().body(containsString("title"));
@@ -26,7 +27,8 @@ public class RestApiSearchTest {
     public void hasSearchProductCremeValueTest() {
         RestPageObjectForSearch po = new RestPageObjectForSearch();
         given().headers(po.getHeaders())
-                .when().get(po.endpoint + "=крем")
+                .queryParams(po.getQueryParams())
+                .when().get(po.endpoint)
                 .then()
                 .statusCode(200)
                 .assertThat().body("data[0].title", containsString("Крем"));
@@ -35,8 +37,9 @@ public class RestApiSearchTest {
     @Test
     public void isInvalidSearchHasEmptyArrayTest() {
         RestPageObjectForSearch po = new RestPageObjectForSearch();
-        Response response = given().headers(po.getHeaders()).
-                when().get(po.endpoint + "=антарес");
+        Response response =  given().headers(po.getHeaders())
+                .queryParams(po.getQueryParamsForInvalidSearch())
+                .when().get(po.endpoint);
         JsonPath jsonPath = response.jsonPath();
         int jsonSize = jsonPath.getInt("data.size()");
         Assertions.assertEquals(jsonSize, 0);
