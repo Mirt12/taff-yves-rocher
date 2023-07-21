@@ -6,7 +6,8 @@ import java.util.HashMap;
 
 public class RestPageObjectForHome {
 
-    String endpoint = "https://api.y-r.by/api/v1";
+    String endpointProducts = "https://api.y-r.by/api/v1/products";
+    String endpointBasket = "https://api.y-r.by/api/v1/basket";
 
     public HashMap<String, String> getHeadersForTopProduct() {
         HashMap<String, String> headers = new HashMap<>();
@@ -23,7 +24,21 @@ public class RestPageObjectForHome {
         return headers;
     }
 
-    public HashMap<String, Number> getQueryParams() {
+    public HashMap<String, Number> getQueryParamsFor1TopProduct() {
+        HashMap<String, Number> queryParams = new HashMap<>();
+        queryParams.put("filter[is_top_seller]", 1);
+        queryParams.put("limit", 1);
+        return queryParams;
+    }
+
+    public HashMap<String, Number> getQueryParamsFor20TopProducts() {
+        HashMap<String, Number> queryParams = new HashMap<>();
+        queryParams.put("filter[is_top_seller]", 1);
+        queryParams.put("limit", 20);
+        return queryParams;
+    }
+
+    public HashMap<String, Number> getQueryParamsForBasket() {
         HashMap<String, Number> queryParams = new HashMap<>();
         queryParams.put("product_id", 3626);
         queryParams.put("amount", 1);
