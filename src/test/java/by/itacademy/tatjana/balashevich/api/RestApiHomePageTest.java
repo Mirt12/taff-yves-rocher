@@ -25,7 +25,8 @@ public class RestApiHomePageTest {
     @Test
     public void isTopProductsHasTwentyItemsTest() {
         RestPageObjectForHome po = new RestPageObjectForHome();
-        Response response = given().headers(po.getHeadersForTopProduct())
+        Response response = given()
+                 .headers(po.getHeadersForTopProduct())
                 .queryParams(po.getQueryParamsFor20TopProducts())
                 .when().get(po.endpointProducts);
         JsonPath jsonPath = response.jsonPath();
@@ -39,7 +40,7 @@ public class RestApiHomePageTest {
         given().headers(po.getHeadersForBasket())
                 .queryParams(po.getQueryParamsForBasket())
                 .when().post(po.endpointBasket)
-                .then()
+                .then().log().body()
                 .statusCode(200)
                 .body("basket[0].product.id", equalTo(3626));
     }

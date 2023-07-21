@@ -15,15 +15,6 @@ public class RestPageObjectForHome {
         return headers;
     }
 
-    public HashMap<String, String> getHeadersForBasket() {
-        Faker faker = new Faker();
-        String letters = faker.internet().password();
-        HashMap<String, String> headers = new HashMap<>();
-        headers.put("accept", "application/json");
-        headers.put("x-session", "d3a2ad058ce3077b6a7ccb01e2fc04dc16d3926" + letters);
-        return headers;
-    }
-
     public HashMap<String, Number> getQueryParamsFor1TopProduct() {
         HashMap<String, Number> queryParams = new HashMap<>();
         queryParams.put("filter[is_top_seller]", 1);
@@ -36,6 +27,16 @@ public class RestPageObjectForHome {
         queryParams.put("filter[is_top_seller]", 1);
         queryParams.put("limit", 20);
         return queryParams;
+    }
+
+    public HashMap<String, String> getHeadersForBasket() {
+        Faker faker = new Faker();
+        String letters = faker.internet().password();
+        HashMap<String, String> headers = new HashMap<>();
+        headers.put("content-type", "application/json");
+        headers.put("accept", "application/json");
+        headers.put("x-session", "d3a2ad058ce3077b6a7ccb01e2fc04dc16d3926" + letters);
+        return headers;
     }
 
     public HashMap<String, Number> getQueryParamsForBasket() {
