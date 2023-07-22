@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.Wait;
 
 import java.util.function.Function;
 
-public class YvesRocherPage {
+public class YRHomePage {
     private WebDriver driver;
     private String baseUrl = "https://www.y-r.by";
     private String loginUrl = "https://www.y-r.by/auth/login";
@@ -32,27 +32,27 @@ public class YvesRocherPage {
     public static final String expectedErrorTextForLongPwd = "Пароль должен быть не более 30 символов";
     public static final String expectedHeaderText = "Персональные данные";
 
-    public YvesRocherPage() {
+    public YRHomePage() {
         this.driver = DriverSingleton.getDriver();
     }
 
-    public YvesRocherPage getBaseURL() {
+    public YRHomePage getBaseURL() {
         driver.get(baseUrl);
         return this;
     }
 
-    public YvesRocherPage getLoginURL() {
+    public YRHomePage getLoginURL() {
         driver.get(loginUrl);
         return this;
     }
 
-    public YvesRocherPage openHomePageLoginLink() {
+    public YRHomePage openHomePageLoginLink() {
         WebElement loginLink = driver.findElement(By.xpath(homePageLoginLinkLocator));
         loginLink.click();
         return this;
     }
 
-    public YvesRocherPage closeLanguageModalOfHomePage(Wait wait) {
+    public YRHomePage closeLanguageModalOfHomePage(Wait wait) {
         WebElement btn = (WebElement) wait.until(new Function<WebDriver, WebElement>() {
             public WebElement apply(WebDriver driver) {
                 return driver.findElement(By.xpath(homePageCloseLanguageModalLocator));
@@ -62,7 +62,7 @@ public class YvesRocherPage {
         return this;
     }
 
-    public YvesRocherPage clickAuthorizationLink(Wait wait) {
+    public YRHomePage clickAuthorizationLink(Wait wait) {
         WebElement authorizationLink = (WebElement) wait.until(new Function<WebDriver, WebElement>() {
             public WebElement apply(WebDriver driver) {
                 return driver.findElement(By.xpath(authorizationLinkLocator));
@@ -72,7 +72,7 @@ public class YvesRocherPage {
         return this;
     }
 
-    public YvesRocherPage fillInputFieldEmail(Wait wait, String email) {
+    public YRHomePage fillInputFieldEmail(Wait wait, String email) {
         WebElement inputEmail = (WebElement) wait.until(new Function<WebDriver, WebElement>() {
             public WebElement apply(WebDriver driver) {
                 return driver.findElement(By.xpath(loginFormInputEmailLocator));
@@ -82,13 +82,13 @@ public class YvesRocherPage {
         return this;
     }
 
-    public YvesRocherPage fillInputFieldPassword(String password) {
+    public YRHomePage fillInputFieldPassword(String password) {
         WebElement inputPassword = driver.findElement(By.xpath(loginFormInputPwdLocator));
         inputPassword.sendKeys(password);
         return this;
     }
 
-    public YvesRocherPage clickSubmitButtonOfLoginForm() {
+    public YRHomePage clickSubmitButtonOfLoginForm() {
         WebElement btn = driver.findElement(By.xpath(submitLoginFormButtonLocator));
         btn.click();
         return this;
