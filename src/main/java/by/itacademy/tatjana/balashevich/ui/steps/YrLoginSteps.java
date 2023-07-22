@@ -6,11 +6,11 @@ import by.itacademy.tatjana.balashevich.ui.utils.LoadHelper;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Wait;
 
-public class YrSteps {
+public class YrLoginSteps {
 
     WebDriver driver;
 
-    public YrSteps() {
+    public YrLoginSteps() {
         this.driver = DriverSingleton.getDriver();
     }
 
