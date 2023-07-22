@@ -12,6 +12,7 @@ public class YRSearchPage {
     private String btnCloseLanguageModalLocator = "//ngx-smart-modal//button[@type='button']";
     private String searchBtnLocator = "//button[@aria-label='search-btn']";
     private String headerLocator = "//h1";
+    private String invalidSearchLocator = "//app-product-list//p";
 
 
     public YRSearchPage() {
@@ -29,9 +30,15 @@ public class YRSearchPage {
         return this;
     }
 
-    public YRSearchPage fillSearchFieldByProduct() {
+    public YRSearchPage fillSearchFieldByValidProduct() {
         WebElement searchInputField = driver.findElement(By.xpath(inputSearchLocator));
         searchInputField.sendKeys("Крем");
+        return this;
+    }
+
+    public YRSearchPage fillSearchFieldByInvalidProduct() {
+        WebElement searchInputField = driver.findElement(By.xpath(inputSearchLocator));
+        searchInputField.sendKeys("антарес");
         return this;
     }
 
@@ -44,6 +51,13 @@ public class YRSearchPage {
     public String getTextOfHeader() {
         WebElement header = driver.findElement(By.xpath(headerLocator));
         String actualText = header.getText();
+        return actualText;
+    }
+
+
+    public String getTextOfInvalidSearch() {
+        WebElement textElement = driver.findElement(By.xpath(invalidSearchLocator));
+        String actualText = textElement.getText();
         return actualText;
     }
 }
