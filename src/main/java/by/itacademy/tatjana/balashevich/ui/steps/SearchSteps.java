@@ -1,7 +1,6 @@
 package by.itacademy.tatjana.balashevich.ui.steps;
 
 import by.itacademy.tatjana.balashevich.ui.driver.DriverSingleton;
-import by.itacademy.tatjana.balashevich.ui.page.YRHomePage;
 import by.itacademy.tatjana.balashevich.ui.page.YRSearchPage;
 import by.itacademy.tatjana.balashevich.ui.utils.LoadHelper;
 import org.openqa.selenium.WebDriver;

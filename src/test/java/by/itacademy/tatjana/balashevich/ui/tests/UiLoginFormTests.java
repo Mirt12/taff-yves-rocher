@@ -1,6 +1,6 @@
 package by.itacademy.tatjana.balashevich.ui.tests;
 
-import by.itacademy.tatjana.balashevich.ui.basetests.BaseLoginTest;
+import by.itacademy.tatjana.balashevich.ui.basetests.BaseTest;
 import by.itacademy.tatjana.balashevich.ui.page.YRHomePage;
 import by.itacademy.tatjana.balashevich.ui.steps.YrLoginSteps;
 import by.itacademy.tatjana.balashevich.ui.utils.LoadHelper;
@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.UnsupportedEncodingException;
 
-public class UiLoginFormTests extends BaseLoginTest {
+public class UiLoginFormTests extends BaseTest {
 
     @Test
     public void userCanOpenLoginForm() throws UnsupportedEncodingException, InterruptedException {

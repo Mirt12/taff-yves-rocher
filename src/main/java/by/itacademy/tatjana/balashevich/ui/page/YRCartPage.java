@@ -16,9 +16,9 @@ public class YRCartPage {
     public static final String searchBtnLocator = "//button[@aria-label='search-btn']";
     public static final String addToCartBtnLocator = "//a[@href='/parfyumeriya/parfyumernaya-voda-istinnyij-eliksir-pyorpl']//button";
     public static final String linkGoToCartLocator = "//a[@class='basket-btn unselectable eye-button']";
-    //public static final String productLocatorInCart = "//a[@href='/parfyumeriya/parfyumernaya-voda-istinnyij-eliksir-pyorpl']";
+
     public static final String productLocatorInCart = "//div[@class='name unselectable']";
-    public static final String expectedProductText = "Парфюмерная вода \"Истинный эликсир пёрпл\"";
+    public static final String expectedProductText = "Парфюмерная Вода \"Истинный Эликсир Пёрпл\"";
 
     public YRCartPage() {
         this.driver = DriverSingleton.getDriver();
