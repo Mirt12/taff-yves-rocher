@@ -16,7 +16,7 @@ public class LoadHelper {
     public static Wait<WebDriver> wait30seconds() {
         WebDriver driver = DriverSingleton.getDriver();
         Wait<WebDriver> fluentWait = new FluentWait<WebDriver>(driver)
-                .withTimeout(Duration.ofSeconds(40))
+                .withTimeout(Duration.ofSeconds(30))
                 .pollingEvery(Duration.ofSeconds(5))
                 .ignoring(NoSuchElementException.class);
         return fluentWait;
