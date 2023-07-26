@@ -23,6 +23,7 @@ public class UISearchTests extends BaseTest {
     public void searchAntaresTest() throws UnsupportedEncodingException, InterruptedException {
         SearchSteps ss = new SearchSteps();
         ss.fillSearchFormAndSubmit("антарес");
+        Thread.sleep(5000);
         String actualText = LoadHelper.getTextByLocator(YRSearchPage.afterSearchTextLocator);
         Assertions.assertEquals(YRSearchPage.expectedTextForInvalidSearch, actualText);
     }

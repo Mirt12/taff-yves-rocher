@@ -5,14 +5,14 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
 public class BaseTest {
-    public class BaseSearchTest {
-        @BeforeEach
-        public void warmUp() {
-        }
 
-        @AfterEach
-        public void tearDown() {
-            DriverSingleton.quit();
-        }
+    @BeforeEach
+    public void warmUp() {
     }
+
+    @AfterEach
+    public void tearDown() {
+        DriverSingleton.quit();
+    }
+
 }
