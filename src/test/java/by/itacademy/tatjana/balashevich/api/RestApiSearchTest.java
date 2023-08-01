@@ -5,7 +5,6 @@ import io.restassured.response.Response;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 
@@ -37,7 +36,7 @@ public class RestApiSearchTest {
     @Test
     public void isInvalidSearchHasEmptyArrayTest() {
         RestPageObjectForSearch po = new RestPageObjectForSearch();
-        Response response =  given().headers(po.getHeaders())
+        Response response = given().headers(po.getHeaders())
                 .queryParams(po.getQueryParamsForInvalidSearch())
                 .when().get(po.endpoint);
         JsonPath jsonPath = response.jsonPath();
