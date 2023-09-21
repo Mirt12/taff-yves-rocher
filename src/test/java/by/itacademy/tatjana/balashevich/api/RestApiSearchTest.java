@@ -2,6 +2,7 @@ package by.itacademy.tatjana.balashevich.api;
 
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
+import io.restassured.response.ResponseBody;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -39,6 +40,10 @@ public class RestApiSearchTest {
         Response response = given().headers(po.getHeaders())
                 .queryParams(po.getQueryParamsForInvalidSearch())
                 .when().get(po.endpoint);
+
+        ResponseBody body = response.getBody();
+        System.out.println("Response Body is: " + body.asString());
+
         JsonPath jsonPath = response.jsonPath();
         int jsonSize = jsonPath.getInt("data.size()");
         Assertions.assertEquals(jsonSize, 0);
