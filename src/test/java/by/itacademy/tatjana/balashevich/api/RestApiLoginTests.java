@@ -1,5 +1,6 @@
 package by.itacademy.tatjana.balashevich.api;
 
+import groovy.json.JsonOutput;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
@@ -30,7 +31,7 @@ public class RestApiLoginTests {
                 .statusCode(401)
                 .body(containsString("message"))
                 .body(not(containsString("token")))
-                .body("message", equalTo("РџСЂРѕРІРµСЂСЊС‚Рµ РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ РІРІРµРґРµРЅРЅС‹С… РґР°РЅРЅС‹С…"));
+                .body("message", equalTo("Проверьте корректность введенных данных"));
     }
 
     @Test
@@ -42,8 +43,8 @@ public class RestApiLoginTests {
                 .then()
                 .assertThat()
                 .statusCode(422)
-                .body("errors.password[0]", equalTo("РџРѕР»Рµ РїР°СЂРѕР»СЊ РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ РґР»СЏ Р·Р°РїРѕР»РЅРµРЅРёСЏ."))
-                .body("errors.email[0]", equalTo("РџРѕР»Рµ СЌР»РµРєС‚СЂРѕРЅРЅР°СЏ РїРѕС‡С‚Р° РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ РґР»СЏ Р·Р°РїРѕР»РЅРµРЅРёСЏ."));
+                .body("errors.password[0]", equalTo("Поле пароль обязательно для заполнения."))
+                .body("errors.email[0]", equalTo("Поле электронная почта обязательно для заполнения."));
     }
 
     @Test
@@ -55,6 +56,6 @@ public class RestApiLoginTests {
                 .then()
                 .assertThat()
                 .statusCode(422)
-                .body("errors.password[0]", equalTo("РџРѕР»Рµ РїР°СЂРѕР»СЊ РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ РґР»СЏ Р·Р°РїРѕР»РЅРµРЅРёСЏ."));
+                .body("errors.password[0]", equalTo("Поле пароль обязательно для заполнения."));
     }
 }

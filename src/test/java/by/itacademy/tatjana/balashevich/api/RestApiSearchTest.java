@@ -30,7 +30,7 @@ public class RestApiSearchTest {
                 .when().get(po.endpoint)
                 .then()
                 .statusCode(200)
-                .assertThat().body("data[0].title", containsString("РљСЂРµРј"));
+                .assertThat().body("data[0].title", containsString("Крем"));
     }
 
     @Test
