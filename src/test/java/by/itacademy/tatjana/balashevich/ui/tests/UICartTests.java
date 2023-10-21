@@ -14,7 +14,7 @@ public class UICartTests extends BaseTest {
     @Test
     public void isProductinTheCartTest() throws UnsupportedEncodingException, InterruptedException {
         CartSteps cs = new CartSteps();
-        cs.fillSearchFormAndSubmit("РСЃС‚РёРЅРЅС‹Р№ СЌР»РёРєСЃРёСЂ РїС‘СЂРїР»");
+        cs.fillSearchFormAndSubmit("Истинный эликсир пёрпл");
         cs.addProductToCart();
         String actualText = LoadHelper.getTextByLocator(YRCartPage.productLocatorInCart);
         Assertions.assertEquals(YRCartPage.expectedProductText, actualText);

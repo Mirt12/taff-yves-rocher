@@ -14,23 +14,23 @@ public class YRHomePage {
     private String loginUrl = "https://www.y-r.by/auth/login";
     private String homePageLoginLinkLocator = "//header//a[@routerlink='/auth/login']";
     private String homePageCloseLanguageModalLocator = "//button[@aria-label='Close']";
-    private String authorizationLinkLocator = "//h2[contains(text(),'РђРІС‚РѕСЂРёР·Р°С†РёСЏ')]";
+    private String authorizationLinkLocator = "//h2[contains(text(),'Авторизация')]";
     private String loginFormInputEmailLocator = "//input[@id='user-email']";
     private String loginFormInputPwdLocator = "//input[@id='user-password']";
-    private String submitLoginFormButtonLocator = "//button[contains(text(),'РђРІС‚РѕСЂРёР·Р°С†РёСЏ')]";
+    private String submitLoginFormButtonLocator = "//button[contains(text(),'Авторизация')]";
     public static final String emailErrorLocator = "//val-errors[@controlname='email']/div[1]";
     public static final String passwordErrorLocator = "//val-errors[@controlname='password']/div[1]";
-    public static final String errorLocatorForNotExistUser = "//div[contains(text(),'РџСЂРѕРІРµСЂСЊС‚Рµ РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ РІРІРµРґРµРЅРЅС‹С… РґР°РЅРЅС‹С…')]";
-    public static final String loginGreetingLocator = "//h2[contains(text(),'РџРµСЂСЃРѕРЅР°Р»СЊРЅС‹Рµ РґР°РЅРЅС‹Рµ')]";
-    public static final String authorizationHeaderLocator = "//h2[contains(text(),'РђРІС‚РѕСЂРёР·Р°С†РёСЏ')]";
+    public static final String errorLocatorForNotExistUser = "//div[contains(text(),'Проверьте корректность введенных данных')]";
+    public static final String loginGreetingLocator = "//h2[contains(text(),'Персональные данные')]";
+    public static final String authorizationHeaderLocator = "//h2[contains(text(),'Авторизация')]";
 
-    public static final String expectedAuthorizationHeaderText = "РђРІС‚РѕСЂРёР·Р°С†РёСЏ";
-    public static final String expectedLoginErrorText = "Р­С‚Рѕ РїРѕР»Рµ СЏРІР»СЏРµС‚СЃСЏ РѕР±СЏР·Р°С‚РµР»СЊРЅС‹Рј";
-    public static final String expectedEmailErrorText = "Email РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РІР°Р»РёРґРЅС‹Рј";
-    public static final String expectedErrorTextForNotExistUser = "РџСЂРѕРІРµСЂСЊС‚Рµ РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ РІРІРµРґРµРЅРЅС‹С… РґР°РЅРЅС‹С…";
-    public static final String expectedErrorTextForShortPwd = "РџР°СЂРѕР»СЊ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ 6 СЃРёРјРІРѕР»РѕРІ";
-    public static final String expectedErrorTextForLongPwd = "РџР°СЂРѕР»СЊ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РЅРµ Р±РѕР»РµРµ 30 СЃРёРјРІРѕР»РѕРІ";
-    public static final String expectedHeaderText = "РџРµСЂСЃРѕРЅР°Р»СЊРЅС‹Рµ РґР°РЅРЅС‹Рµ";
+    public static final String expectedAuthorizationHeaderText = "Авторизация";
+    public static final String expectedLoginErrorText = "Это поле является обязательным";
+    public static final String expectedEmailErrorText = "Email должен быть валидным";
+    public static final String expectedErrorTextForNotExistUser = "Проверьте корректность введенных данных";
+    public static final String expectedErrorTextForShortPwd = "Пароль должен быть больше 6 символов";
+    public static final String expectedErrorTextForLongPwd = "Пароль должен быть не более 30 символов";
+    public static final String expectedHeaderText = "Персональные данные";
 
     public YRHomePage() {
         this.driver = DriverSingleton.getDriver();

@@ -14,7 +14,7 @@ public class UISearchTests extends BaseTest {
     @Test
     public void searchCremeTest() throws UnsupportedEncodingException, InterruptedException {
         SearchSteps ss = new SearchSteps();
-        ss.fillSearchFormAndSubmit("РљСЂРµРј");
+        ss.fillSearchFormAndSubmit("Крем");
         String actualText = LoadHelper.getTextByLocator(YRSearchPage.headerLocator);
         Assertions.assertEquals(YRSearchPage.expectedHeaderText, actualText);
     }
@@ -22,7 +22,7 @@ public class UISearchTests extends BaseTest {
     @Test
     public void searchAntaresTest() throws UnsupportedEncodingException, InterruptedException {
         SearchSteps ss = new SearchSteps();
-        ss.fillSearchFormAndSubmit("Р°РЅС‚Р°СЂРµСЃ");
+        ss.fillSearchFormAndSubmit("антарес");
         Thread.sleep(5000);
         String actualText = LoadHelper.getTextByLocator(YRSearchPage.afterSearchTextLocator);
         Assertions.assertEquals(YRSearchPage.expectedTextForInvalidSearch, actualText);

@@ -11,13 +11,13 @@ import java.util.function.Function;
 public class YRSearchPage {
     private WebDriver driver;
     private String url = "https://www.y-r.by";
-    private String inputSearchLocator = "//input[@placeholder='РџРѕРёСЃРє']";
+    private String inputSearchLocator = "//input[@placeholder='Поиск']";
     private String btnCloseLanguageModalLocator = "//ngx-smart-modal//button[@type='button']";
     private String searchBtnLocator = "//button[@aria-label='search-btn']";
     public static final String headerLocator = "//h1";
     public static final String afterSearchTextLocator = "//div [@_ngcontent-serverapp-c86='']/p[@class='number-of-products ng-star-inserted']";
-    public static final String expectedHeaderText = "РџРѕРёСЃРє РїСЂРѕРґСѓРєС‚Р°";
-    public static final String expectedTextForInvalidSearch = "РџРѕРёСЃРє В«Р°РЅС‚Р°СЂРµСЃВ» РЅРµ РґР°Р» СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ. РџРѕРїСЂРѕР±СѓР№С‚Рµ СЃРЅРѕРІР°.";
+    public static final String expectedHeaderText = "Поиск продукта";
+    public static final String expectedTextForInvalidSearch = "Поиск «антарес» не дал результатов. Попробуйте снова.";
 
 
     public YRSearchPage() {

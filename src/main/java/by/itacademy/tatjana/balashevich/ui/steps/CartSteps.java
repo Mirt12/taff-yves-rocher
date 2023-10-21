@@ -18,7 +18,7 @@ public class CartSteps {
         Wait<WebDriver> wait = LoadHelper.wait30seconds();
         po.getUrl()
                 .closeLanguageModalOfHomePage(wait)
-                .fillSearchFieldByProduct(searchWord)
+                .fillSearchFieldByProduct(wait, searchWord)
                 .clickSearchBtn();
         return this;
     }

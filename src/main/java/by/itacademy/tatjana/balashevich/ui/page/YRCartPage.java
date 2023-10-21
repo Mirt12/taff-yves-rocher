@@ -11,14 +11,14 @@ import java.util.function.Function;
 public class YRCartPage {
     private WebDriver driver;
     private String baseUrl = "https://www.y-r.by";
-    private String inputSearchLocator = "//input[@placeholder='РџРѕРёСЃРє']";
+    private String inputSearchLocator = "//input[@class='eye-font eye-placeholder ng-tns-c110-0 ng-untouched ng-pristine ng-valid']";
     private String btnCloseLanguageModalLocator = "//ngx-smart-modal//button[@type='button']";
     public static final String searchBtnLocator = "//button[@aria-label='search-btn']";
     public static final String addToCartBtnLocator = "//a[@href='/parfyumeriya/parfyumernaya-voda-istinnyij-eliksir-pyorpl']//button";
     public static final String linkGoToCartLocator = "//a[@class='basket-btn unselectable eye-button']";
 
-    public static final String productLocatorInCart = "//div[@class='name unselectable']";
-    public static final String expectedProductText = "РџР°СЂС„СЋРјРµСЂРЅР°СЏ Р’РѕРґР° \"РСЃС‚РёРЅРЅС‹Р№ Р­Р»РёРєСЃРёСЂ РџС‘СЂРїР»\"";
+    public static final String productLocatorInCart = "//h3[@class='product-title']";
+    public static final String expectedProductText = "Парфюмерная вода \"Истинный эликсир пёрпл\"";
 
     public YRCartPage() {
         this.driver = DriverSingleton.getDriver();
@@ -39,8 +39,12 @@ public class YRCartPage {
         return this;
     }
 
-    public YRCartPage fillSearchFieldByProduct(String searchWord) {
-        WebElement searchInputField = driver.findElement(By.xpath(inputSearchLocator));
+    public YRCartPage fillSearchFieldByProduct(Wait wait, String searchWord) {
+        WebElement searchInputField = (WebElement) wait.until(new Function<WebDriver, WebElement>() {
+            public WebElement apply(WebDriver driver) {
+                return driver.findElement(By.xpath(inputSearchLocator));
+            }
+        });
         searchInputField.sendKeys(searchWord);
         return this;
     }
