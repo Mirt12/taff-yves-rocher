@@ -17,6 +17,7 @@ public class CartSteps {
         YRCartPage po = new YRCartPage();
         Wait<WebDriver> wait = LoadHelper.wait30seconds();
         po.getUrl()
+                .closeCookiesModal(wait)
                 .closeLanguageModalOfHomePage(wait)
                 .fillSearchFieldByProduct(wait, searchWord)
                 .clickSearchBtn();

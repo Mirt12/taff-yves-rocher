@@ -13,6 +13,7 @@ public class YRSearchPage {
     private String url = "https://www.y-r.by";
     private String inputSearchLocator = "//input[@placeholder='Поиск']";
     private String btnCloseLanguageModalLocator = "//ngx-smart-modal//button[@type='button']";
+    private String btnCloseCookiesModal = "//button[@class='button button-submit']";
     private String searchBtnLocator = "//button[@aria-label='search-btn']";
     public static final String headerLocator = "//h1";
     public static final String afterSearchTextLocator = "//div [@_ngcontent-serverapp-c86='']/p[@class='number-of-products ng-star-inserted']";
@@ -29,6 +30,16 @@ public class YRSearchPage {
         return this;
     }
 
+
+    public YRSearchPage closeCookiesModal(Wait wait) {
+        WebElement btn = (WebElement) wait.until(new Function<WebDriver, WebElement>() {
+            public WebElement apply(WebDriver driver) {
+                return driver.findElement(By.xpath(btnCloseCookiesModal));
+            }
+        });
+        btn.click();
+        return this;
+    }
 
     public YRSearchPage closeLanguageModalOfHomePage(Wait wait) {
         WebElement btn = (WebElement) wait.until(new Function<WebDriver, WebElement>() {

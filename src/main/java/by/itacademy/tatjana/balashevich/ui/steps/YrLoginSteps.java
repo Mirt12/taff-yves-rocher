@@ -18,6 +18,7 @@ public class YrLoginSteps {
         YRHomePage page = new YRHomePage();
         Wait<WebDriver> wait = LoadHelper.wait30seconds();
         page.getBaseURL()
+                .closeCookiesModal(wait)
                 .closeLanguageModalOfHomePage(wait)
                 .openHomePageLoginLink()
                 .clickAuthorizationLink(wait);
@@ -27,6 +28,7 @@ public class YrLoginSteps {
         YRHomePage page = new YRHomePage();
         Wait<WebDriver> wait = LoadHelper.wait30seconds();
         page.getLoginURL()
+                .closeCookiesModal(wait)
                 .closeLanguageModalOfHomePage(wait)
                 .clickAuthorizationLink(wait)
                 .fillInputFieldEmail(wait, email)

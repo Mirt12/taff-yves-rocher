@@ -18,6 +18,7 @@ public class SearchSteps {
         YRSearchPage po = new YRSearchPage();
         Wait<WebDriver> wait = LoadHelper.wait30seconds();
         po.getUrl()
+                .closeCookiesModal(wait)
                 .closeLanguageModalOfHomePage(wait)
                 .fillSearchFieldByProduct(searchWord)
                 .clickSearchBtn();

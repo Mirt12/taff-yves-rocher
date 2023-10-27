@@ -14,6 +14,7 @@ public class YRHomePage {
     private String loginUrl = "https://www.y-r.by/auth/login";
     private String homePageLoginLinkLocator = "//header//a[@routerlink='/auth/login']";
     private String homePageCloseLanguageModalLocator = "//button[@aria-label='Close']";
+    private String btnCloseCookiesModal = "//button[@class='button button-submit']";
     private String authorizationLinkLocator = "//h2[contains(text(),'Авторизация')]";
     private String loginFormInputEmailLocator = "//input[@id='user-email']";
     private String loginFormInputPwdLocator = "//input[@id='user-password']";
@@ -56,6 +57,16 @@ public class YRHomePage {
         WebElement btn = (WebElement) wait.until(new Function<WebDriver, WebElement>() {
             public WebElement apply(WebDriver driver) {
                 return driver.findElement(By.xpath(homePageCloseLanguageModalLocator));
+            }
+        });
+        btn.click();
+        return this;
+    }
+
+    public YRHomePage closeCookiesModal(Wait wait) {
+        WebElement btn = (WebElement) wait.until(new Function<WebDriver, WebElement>() {
+            public WebElement apply(WebDriver driver) {
+                return driver.findElement(By.xpath(btnCloseCookiesModal));
             }
         });
         btn.click();

@@ -13,6 +13,7 @@ public class YRCartPage {
     private String baseUrl = "https://www.y-r.by";
     private String inputSearchLocator = "//input[@class='eye-font eye-placeholder ng-tns-c110-0 ng-untouched ng-pristine ng-valid']";
     private String btnCloseLanguageModalLocator = "//ngx-smart-modal//button[@type='button']";
+    private String btnCloseCookiesModal = "//button[@class='button button-submit']";
     public static final String searchBtnLocator = "//button[@aria-label='search-btn']";
     public static final String addToCartBtnLocator = "//a[@href='/parfyumeriya/parfyumernaya-voda-istinnyij-eliksir-pyorpl']//button";
     public static final String linkGoToCartLocator = "//a[@class='basket-btn unselectable eye-button']";
@@ -38,6 +39,18 @@ public class YRCartPage {
         btn.click();
         return this;
     }
+
+    public YRCartPage closeCookiesModal(Wait wait) {
+        WebElement btn = (WebElement) wait.until(new Function<WebDriver, WebElement>() {
+            public WebElement apply(WebDriver driver) {
+                return driver.findElement(By.xpath(btnCloseCookiesModal));
+            }
+        });
+        btn.click();
+        return this;
+    }
+
+
 
     public YRCartPage fillSearchFieldByProduct(Wait wait, String searchWord) {
         WebElement searchInputField = (WebElement) wait.until(new Function<WebDriver, WebElement>() {
