@@ -18,20 +18,22 @@ public class YRHomePage {
     private String authorizationLinkLocator = "//h2[contains(text(),'Авторизация')]";
     private String loginFormInputEmailLocator = "//input[@id='user-email']";
     private String loginFormInputPwdLocator = "//input[@id='user-password']";
-    private String submitLoginFormButtonLocator = "//button[contains(text(),'Авторизация')]";
+    public static final String submitLoginFormButtonLocator = "//button[contains(text(),'Авторизация')]";
     public static final String emailErrorLocator = "//val-errors[@controlname='email']/div[1]";
     public static final String passwordErrorLocator = "//val-errors[@controlname='password']/div[1]";
     public static final String errorLocatorForNotExistUser = "//div[contains(text(),'Проверьте корректность введенных данных')]";
     public static final String loginGreetingLocator = "//h2[contains(text(),'Персональные данные')]";
     public static final String authorizationHeaderLocator = "//h2[contains(text(),'Авторизация')]";
-
+    public static final String authorizeBySocialNetworksTextLocator = "//h3[contains(text(),'Авторизуйтесь через профиль в социальной сети')]";
     public static final String expectedAuthorizationHeaderText = "Авторизация";
+    public static final String expectedTextForSocialNetworksAuthorization = "Авторизуйтесь через профиль в социальной сети";
     public static final String expectedLoginErrorText = "Это поле является обязательным";
     public static final String expectedEmailErrorText = "Email должен быть валидным";
     public static final String expectedErrorTextForNotExistUser = "Проверьте корректность введенных данных";
     public static final String expectedErrorTextForShortPwd = "Пароль должен быть больше 6 символов";
     public static final String expectedErrorTextForLongPwd = "Пароль должен быть не более 30 символов";
     public static final String expectedHeaderText = "Персональные данные";
+    public static final String expectedSubmitButtonText = "АВТОРИЗАЦИЯ";
 
     public YRHomePage() {
         this.driver = DriverSingleton.getDriver();
